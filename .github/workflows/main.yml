@@ -1,30 +1,26 @@
-name: Semgrep Automation 
+name: Semgrep Automation
 
 on:
- push: 
-  branches:
-    - master 
- pull_request: 
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   semgrep:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
 
-    steps: 
-      - name: checkout_code
-        uses: actions/checkout@v4 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/checkout@v4
-          with:
-              python-version: '3.x'  
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
 
-      - name: Install semgrep
-        run: pip install Semgrep 
+      - name: Install Semgrep
+        run: pip install semgrep
 
-      - name: Run semgrep 
-        run: semgrep --config auto --error || true 
- 
-
-
- 
+      - name: Run Semgrep
+        run: semgrep --config auto --error || true
